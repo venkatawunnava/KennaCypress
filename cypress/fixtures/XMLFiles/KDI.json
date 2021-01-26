@@ -1,0 +1,352 @@
+{
+  "skip_autoclose":false,
+  "assets":[
+    {
+      "file":"app/models/data_access/asset.rb",
+      "application":"conduit",
+      "priority": 0,
+      "vulns":[
+        {
+          "scanner_identifier":16,
+          "external_unique_id":105,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "due_date":"2018-06-02T00:00:00+00:00",
+          "status":"open",
+          "details": "foobar",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/clients_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":105,
+          "external_unique_id":137,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/vulnerabilities_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":18,
+          "external_unique_id":275,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/api/slack_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":23,
+          "external_unique_id":245,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/models/fix.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":0,
+          "external_unique_id":108,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/models/fix.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":0,
+          "external_unique_id":101,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/models/data_access/asset.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":0,
+          "external_unique_id":110,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/models/data_access/asset.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":0,
+          "external_unique_id":116,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/models/client.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":0,
+          "external_unique_id":151,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/connectors_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":24,
+          "external_unique_id":265,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/views/admin/clients/show.html.erb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":2,
+          "external_unique_id":30,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/views/vulnerabilities/show.html.erb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":2,
+          "external_unique_id":83,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/views/vulnerabilities/show.html.erb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":2,
+          "external_unique_id":105,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/views/vulnerabilities/show.html.erb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":4,
+          "external_unique_id":119,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/api_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":7,
+          "external_unique_id":1,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/application_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":86,
+          "external_unique_id":null,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    },
+    {
+      "file":"app/controllers/clients_controller.rb",
+      "application":"conduit",
+      "vulns":[
+        {
+          "scanner_identifier":10,
+          "external_unique_id":2,
+          "scanner_type":"Brakeman",
+          "created_at":"2018-05-03T00:00:00+00:00",
+          "last_seen_at":"2018-05-03T00:00:00+00:00",
+          "last_fixed_on":"2018-05-03T00:00:00+00:00",
+          "scanner_score": 2,
+          "override_score": 3,
+          "status":"open"
+        }
+      ]
+    }
+  ],
+  "vuln_defs":[
+    {
+      "scanner_identifier":16,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-17",
+      "solution":"Fix it!"
+    },
+    {
+      "scanner_identifier":105,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    },
+    {
+      "scanner_identifier":18,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    },
+    {
+      "scanner_identifier":23,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-36"
+    },
+    {
+      "scanner_identifier":0,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-19"
+    },
+    {
+      "scanner_identifier":24,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    },
+    {
+      "scanner_identifier":2,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-08"
+    },
+    {
+      "scanner_identifier":4,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-11"
+    },
+    {
+      "scanner_identifier":7,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    },
+    {
+      "scanner_identifier":86,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    },
+    {
+      "scanner_identifier":10,
+      "scanner_type":"Brakeman",
+      "wasc_identifiers":"WASC-15"
+    }
+  ]
+}

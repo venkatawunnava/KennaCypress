@@ -1,0 +1,181 @@
+<NexposeReport version="2.0">
+  <scans>
+    <scan id="1" name="Scan Name" startTime="20200824T080000372" endTime="20200824T114311668" status="finished"/>
+  </scans>
+  <nodes>
+    <node address="100.64.128.1" status="alive" hardware-address="00162510D574" device-id="4607" site-name="NexposeTag" site-importance="Normal" scan-template="MML - Full audit without Web Spider" risk-score="0.0">
+      <names>
+        <name>17msil-1.mot.com</name>
+        <name>SpeedwayR-10-D5-74</name>
+      </names>
+      <fingerprints>
+        <os  certainty="0.70" device-class="Router" vendor="Juniper" family="JUNOS" product="JUNOS" version="8.5"/>
+        <os  certainty="0.80" vendor="Juniper" family="Junos" product="Junos OS" version="11.4R7.5" arch="amd64"/>
+        <os  certainty="0.70" device-class="Switch" vendor="Juniper" family="JUNOS" product="JUNOS" version="8.5"/>
+      </fingerprints>
+      <tests>
+        <test id="generic-icmp-timestamp" key="" status="vulnerable-exploited" vulnerable-since="20140311T092855613" pci-compliance-status="pass">
+          <Paragraph>
+            <Paragraph>Able to determine remote system time.</Paragraph>
+          </Paragraph>
+        </test>
+      </tests>
+      <endpoints>
+        <endpoint protocol="tcp" port="22" status="open">
+          <services>
+            <service name="SSH">
+              <fingerprints>
+                <fingerprint  certainty="0.90" vendor="OpenBSD" family="OpenSSH" product="OpenSSH" version="4.4"/>
+              </fingerprints>
+              <configuration>
+                <config name="ssh.banner">SSH-1.99-OpenSSH_4.4</config>
+                <config name="ssh.protocol.version">1.99</config>
+                <config name="ssh.rsa.pubkey.fingerprint">339137272C06508BA71AF99130D0259D</config>
+              </configuration>
+              <tests>
+                <test id="msft-cve-2017-5715" key="" status="vulnerable-version" vulnerable-since="20140423T111708081" pci-compliance-status="fail">
+                  <Paragraph>
+                    <Paragraph>Vulnerable OS: Microsoft Windows 7 Professional Edition SP1
+                      <Paragraph/>
+                    </Paragraph>
+                    <Paragraph>Vulnerability in CPU Microcode Could Allow Information Disclosure ("Spectre" / Branch Target Injection)</Paragraph>
+                  </Paragraph>
+                </test>
+                <test id="xss-cve-2019-16295" key="" status="vulnerable-version" vulnerable-since="20140423T111708081" pci-compliance-status="fail">
+                  <Paragraph>
+                    <Paragraph>Vulnerable OS: CentOS
+                      <Paragraph/>
+                    </Paragraph>
+                    <Paragraph>Stored XSS in filemanager2.php in CentOS-WebPanel.com (aka CWP) CentOS Web Panel 0.9.8.885 exists via the cmd_arg parameter. This can be exploited by a local attacker who supplies a crafted filename within a directory visited by the victim.</Paragraph>
+                  </Paragraph>
+                </test>
+                <test id="VMware-cve-2019-5533" key="" status="vulnerable-version" vulnerable-since="20140423T111708081" pci-compliance-status="fail">
+                  <Paragraph>
+                    <Paragraph>Vulnerable OS: Microsoft Windows 7 Professional Edition SP1
+                      <Paragraph/>
+                    </Paragraph>
+                    <Paragraph>In VMware SD-WAN by VeloCloud versions 3.x prior to 3.3.0, the VeloCloud Orchestrator parameter authorization check mistakenly allows enterprise users to obtain information of Managed Service Provider accounts. Among the information is username, first and last name, phone numbers and e-mail address if present but no other personal data. VMware has evaluated the severity of this issue to be in the moderate severity range with a maximum CVSSv3 base score of 4.3.</Paragraph>
+                  </Paragraph>
+                </test>
+                <test id="adobe-air-cve-2013-3326" key="" status="vulnerable-version" vulnerable-since="20140423T111708081" pci-compliance-status="fail">
+                  <Paragraph>
+                    <Paragraph>Vulnerable OS: Microsoft Windows 7 Professional Edition SP1
+                      <Paragraph/>
+                    </Paragraph>
+                    <Paragraph>Vulnerable software installed: Adobe AIR 3.7.0.1530</Paragraph>
+                  </Paragraph>
+                </test>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+        <endpoint protocol="tcp" port="22" status="open">
+          <services>
+            <service name="SSH">
+              <fingerprints>
+                <fingerprint  certainty="0.90" vendor="OpenBSD" family="OpenSSH" product="OpenSSH" version="5.8"/>
+              </fingerprints>
+              <configuration>
+                <config name="ssh.banner">SSH-2.0-OpenSSH_5.8</config>
+                <config name="ssh.protocol.version">2.0</config>
+                <config name="ssh.rsa.pubkey.fingerprint">B5C7F559C4B4881E972DB4D07A290020</config>
+              </configuration>
+              <tests>
+                <test>
+                </test>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+
+        <endpoint protocol="udp" port="123" status="open">
+          <services>
+            <service name="NTP">
+              <fingerprints>
+                <fingerprint  certainty="0.90" family="NTP" product="NTP" version="4.2.0-a"/>
+              </fingerprints>
+              <configuration>
+                <config name="ntp.variables">version=&quot;ntpd 4.2.0-a Fri Mar  1 08:50:44 UTC 2013 (1)&quot;,
+                  processor=&quot;amd64&quot;, system=&quot;JUNOS11.4R7.5&quot;, leap=0, stratum=2,
+                  precision=-21, rootdelay=21.162, rootdispersion=48.893, peer=45324,
+                  refid=10.177.128.120, reftime=0xd7dd2fc0.5c46dff4, poll=10,
+                  clock=0xd7dd345d.4a7a0a21, state=4, offset=0.176, frequency=23.398,
+                  jitter=0.120, stability=0.004
+                </config>
+              </configuration>
+              <tests>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+
+        <endpoint protocol="udp" port="161" status="open">
+          <services>
+            <service name="SNMP">
+              <tests>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+      </endpoints>
+    </node>
+
+    <node address="100.64.128.2" status="alive" device-id="4608" site-name="" site-importance="Normal" scan-template="MML - Full audit without Web Spider" risk-score="0.0">
+      <fingerprints>
+        <os  certainty="0.80" vendor="Juniper" product="Junos OS" version="11.4R7.5" arch="amd64"/>
+        <os  certainty="0.70" device-class="Router" vendor="Juniper" family="JUNOS" product="JUNOS" version="8.5"/>
+        <os  certainty="0.70" device-class="Switch" vendor="Juniper" family="JUNOS" product="JUNOS" version="8.5"/>
+      </fingerprints>
+      <tests></tests>
+      <endpoints>
+        <endpoint protocol="tcp" port="22" status="open">
+          <services>
+            <service name="SSH">
+              <fingerprints>
+                <fingerprint  certainty="0.90" vendor="OpenBSD" family="OpenSSH" product="OpenSSH" version="5.8"/>
+              </fingerprints>
+              <configuration>
+                <config name="ssh.banner">SSH-2.0-OpenSSH_5.8</config>
+                <config name="ssh.protocol.version">2.0</config>
+                <config name="ssh.rsa.pubkey.fingerprint">8EA339CD706D2F28FFEB11BF198DE66E</config>
+              </configuration>
+              <tests>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+
+        <endpoint protocol="udp" port="123" status="open">
+          <services>
+            <service name="NTP">
+              <fingerprints>
+                <fingerprint  certainty="0.90" family="NTP" product="NTP" version="4.2.0-a"/>
+              </fingerprints>
+              <configuration>
+                <config name="ntp.variables">version=&quot;ntpd 4.2.0-a Fri Mar  1 08:50:44 UTC 2013 (1)&quot;,
+                  processor=&quot;amd64&quot;, system=&quot;JUNOS11.4R7.5&quot;, leap=0, stratum=2,
+                  precision=-21, rootdelay=21.206, rootdispersion=47.182, peer=6164,
+                  refid=10.177.128.120, reftime=0xd7dd308a.77371ee9, poll=10,
+                  clock=0xd7dd3460.f0d215dd, state=4, offset=-0.630, frequency=20.995,
+                  jitter=0.994, stability=0.045
+                </config>
+              </configuration>
+              <tests>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+
+        <endpoint protocol="udp" port="161" status="open">
+          <services>
+            <service name="SNMP">
+              <tests>
+              </tests>
+            </service>
+          </services>
+        </endpoint>
+      </endpoints>
+    </node>
+
+  </nodes>
+</NexposeReport>

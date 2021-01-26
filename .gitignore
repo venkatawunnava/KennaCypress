@@ -1,0 +1,5 @@
+.idea/
+node_modules/
+notes/
+cypress.json
+.DS_Store

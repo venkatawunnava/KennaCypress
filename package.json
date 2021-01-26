@@ -1,0 +1,31 @@
+{
+  "name": "kennacypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venkatawunnava/KennaCypress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venkatawunnava/KennaCypress/issues"
+  },
+  "homepage": "https://github.com/venkatawunnava/KennaCypress#readme",
+  "devDependencies": {
+    "@types/eslint": "^7.2.6",
+    "cypress": "^6.3.0",
+    "cypress-file-upload": "^5.0.2",
+    "cypress-intellij-reporter": "^0.0.6",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}

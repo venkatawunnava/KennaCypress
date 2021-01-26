@@ -1,0 +1,32 @@
+{
+  "add_riskMeter": [
+    {
+      "search":"application:\"CanIparkHere\"",
+      "saveAs":"CanIparkHere"
+    },
+    {
+      "search":"ip:192.168.10.15",
+      "saveAs":"IP with no vulns"
+    },
+    {
+      "search":"ip:10.0.10.96",
+      "saveAs": "ip with vulns"
+    },
+    {
+      "search":"application:\"conduit\"",
+      "saveAs":"KDI conduit"
+    },
+    {
+      "search":"application:\"NMLV Hub\"",
+      "saveAs":"NMLV Hub"
+    },
+    {
+      "search":"application:\"WebGoat\"",
+      "saveAs": "WebGoat"
+    },
+    {
+      "search":"application:\"windows2003-sp0:8081\"",
+      "saveAs":"Windows"
+    }
+  ]
+}

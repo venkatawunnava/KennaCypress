@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<XmlReport Name="appscanModSecuretest" XmlExportVersion="2.0">
+  <AppScanInfo>
+    <Version>8.6.0.272</Version>
+    <ServicePack />
+  </AppScanInfo>
+  <Summary>
+    <TotalIssues>82</TotalIssues>
+    <TotalVariants>929</TotalVariants>
+    <TotalRemediations>75</TotalRemediations>
+    <TotalScanDuration>01:14:54.4999999</TotalScanDuration>
+    <Hosts>
+      <Host Name="http://204.16.90.54/">
+        <TotalInformationalIssues>15</TotalInformationalIssues>
+        <TotalLowSeverityIssues>23</TotalLowSeverityIssues>
+        <TotalMediumSeverityIssues>18</TotalMediumSeverityIssues>
+        <TotalHighSeverityIssues>26</TotalHighSeverityIssues>
+        <Total>82</Total>
+      </Host>
+    </Hosts>
+  </Summary>
+  <Results>
+    <RemediationTypes>
+      <Total>14</Total>
+      <RemediationType ID="fix_52720">
+        <Name>Always use SSL and POST (body) parameters when sending sensitive information.</Name>
+        <Priority>High</Priority>
+        <fixRecommendation type="General">
+          <text>1. Make sure that all login requests are sent encrypted to the server.</text>
+          <text>2. Make sure that sensitive information such as:</text>
+          <indentText>   - Username</indentText>
+          <indentText>   - Password</indentText>
+          <indentText>   - Social Security number</indentText>
+          <indentText>   - Credit Card number</indentText>
+          <indentText>   - Driver's License number</indentText>
+          <indentText>   - e-mail address</indentText>
+          <indentText>   - Phone number</indentText>
+          <indentText>   - Zip code</indentText>
+          <br />
+          <text>is always sent encrypted to the server.</text>
+        </fixRecommendation>
+      </RemediationType>
+      <RemediationType ID="fix_58915">
+        <Name>Analyze client side code and sanitize its input sources</Name>
+        <Priority>High</Priority>
+        <fixRecommendation type="General">
+          <text>Analyze and harden client side (JavaScript) code.</text>
+          <text>Sanitize input sources which can be influenced by an attacker.</text>
+          <br />
+          <text>For example:</text>
+          <br />
+          <text>- document.URL </text>
+          <text>- document.URLUnencoded </text>
+          <text>- document.location (and many of its properties) </text>
+          <text>- document.referrer </text>
+          <text>- window.location (and many of its properties) </text>
+          <br />
+          <text>Special attention should be given to scenarios in which the DOM is modified.</text>
+          <br />
+          <text>For example: </text>
+          <br />
+          <text>- Write raw HTML, e.g.: </text>
+          <indentText>  * document.write(...) </indentText>
+          <indentText>  * document.writeln(...) </indentText>
+          <indentText>  * document.body.innerHtml=... </indentText>
+          <br />
+          <text>- Directly modifying the DOM (including DHTML events), e.g.: </text>
+          <indentText>  * document.forms[0].action=... (and various other collections) </indentText>
+          <indentText>  * document.attachEvent(...) </indentText>
+          <indentText>  * document.create...(...) </indentText>
+          <indentText>  * document.execCommand(...) </indentText>
+          <indentText>  * document.body. ... (accessing the DOM through the body object) </indentText>
+          <indentText>  * window.attachEvent(...) </indentText>
+          <br />
+          <text>- Replacing the document URL, e.g.: </text>
+          <indentText>  * document.location=... (and assigning to location's href, host </indentText>
+          <indentText>    and hostname) </indentText>
+          <indentText>  * document.location.hostname=... </indentText>
+          <indentText>  * document.location.replace(...) </indentText>
+          <indentText>  * document.location.assign(...) </indentText>
+          <indentText>  * document.URL=... </indentText>
+          <indentText>  * window.navigate(...) </indentText>
+          <br />
+          <text>- Opening/modifying a window, e.g.: </text>
+          <indentText>  * document.open(...) </indentText>
+          <indentText>  * window.open(...) </indentText>
+          <indentText>  * window.location.href=... (and assigning to location's href, host</indentText>
+          <indentText>    and hostname) </indentText>
+          <br />
+          <text>- Directly executing script, e.g.: </text>
+          <indentText>  * eval(...) </indentText>
+          <indentText>  * window.execScript(...) </indentText>
+          <indentText>  * window.setInterval(...) </indentText>
+          <indentText>  * window.setTimeout(...) </indentText>
+          <br />
+          <text>Consider the following vulnerable script:</text>
+          <code>  &lt;SCRIPT&gt;
+    var position=document.URL.indexOf("age=")+4;
+    document.write(document.URL.substring(position,document.URL.length));
+  &lt;/SCRIPT&gt;
+</code>
+          <br />
+          <text>In this example the age parameter isn't sanitized, therefore the script is susceptible to DOM Cross-Site Scripting attacks.</text>
+          <text>A safe version of this script would be:</text>
+          <br />
+          <code>  &lt;SCRIPT&gt;
+    var position=document.URL.indexOf("age=")+4;
+    var age=document.URL.substring(position,document.URL.length);
+    if (age.match(/^[0-9]*$/))
+    {
+          document.write(age);
+    }
+    else
+    {
+          window.alert("Illegal input.\nAge parameter should be composed from numerical characters only.");
+    }
+  &lt;/SCRIPT&gt;
+</code>
+          <br />
+          <text>In this version, the age parameter is validated to make sure it doesn't contain hazardous characters.</text>
+          <br />
+          <text>Please also see the "DOM based XSS Prevention Cheat Sheet": </text>
+          <link target="http://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet">http://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet</link>
+          <text>by OWASP, for more information.</text>
+        </fixRecommendation>
+      </RemediationType>
+    </RemediationTypes>
+    <IssueTypes>
+      <Total>20</Total>
+      <IssueType ID="attCrossSiteScripting" Count="6">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>Cross-Site Scripting</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Cross-site Scripting</name>
+            <reference>http://projects.webappsec.org/Cross-Site+Scripting</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>AppScan has detected that the application does not correctly neutralize user-controllable input before it is placed in output that is served as a web page.</text>
+            <text>In this case, the JavaScript code will be executed by the browser (The &gt;"'&gt; part is irrelevant here).</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/79.html" id="CWE-79">79</link>
+          </cwe>
+          <references>
+            <link target="http://www.cert.org/advisories/CA-2000-02.html">CERT Advisory CA-2000-02</link>
+            <link target="http://support.microsoft.com/default.aspx?scid=kb;EN-US;q252985">Microsoft How To: Prevent Cross-Site Scripting Security Issues (Q252985)</link>
+            <link target="http://msdn2.microsoft.com/en-us/library/ms998274.aspx">Microsoft How To: Prevent Cross-Site Scripting in ASP.NET</link>
+            <link target="http://msdn2.microsoft.com/en-us/library/Bb355989.aspx">Microsoft How To: Protect From Injection Attacks in ASP.NET</link>
+            <link target="http://msdn2.microsoft.com/en-us/library/ms998267.aspx">Microsoft How To: Use Regular Expressions to Constrain Input in ASP.NET</link>
+            <link target="http://msdn2.microsoft.com/en-us/security/aa973814.aspx">Microsoft .NET Anti-Cross Site Scripting Library</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/xss/viewer.swf#recorded_advisory">Cross-Site Scripting Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+              <text>[1] Strategy: Libraries or Frameworks</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>[1] We recommend that you upgrade your server to .NET Framework 2.0 (or newer), which includes inherent security checks that protect against cross site scripting attacks.</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** Input Data Validation:</text>
+              <br />
+            </fixRecommendation>
+            <fixRecommendation type="PHP">
+              <text>** Input Data Validation:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="DOMXSS1" Count="3">
+        <RemediationID>fix_58915</RemediationID>
+        <advisory>
+          <name>DOM Based Cross-Site Scripting</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Cross-site Scripting</name>
+            <reference>http://projects.webappsec.org/Cross-Site+Scripting</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>In DOM-based XSS, the client performs the injection of XSS into the page, as opposed to other XSS types (Reflected and Stored XSS) where the server performs the injection. DOM-based XSS generally involves server-controlled, trusted script (such as Javascript) that is sent to the client and performs sanity checks on a form before the user submits it. If the server-supplied script processes user-supplied data, and then injects it back into the web page (such as with dynamic HTML), then DOM-based XSS is possible.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>The web application uses client-side logic to create web pages</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/79.html" id="CWE-79">79</link>
+          </cwe>
+          <references />
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Analyze and harden client side (JavaScript) code.</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attNullByte" Count="2">
+        <RemediationID>fix_50160</RemediationID>
+        <advisory>
+          <name>Poison Null Byte Windows Files Retrieval</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Null Byte Injection</name>
+            <reference>http://projects.webappsec.org/Null-Byte-Injection</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The product does not properly handle null bytes or NUL characters when passing data between different representations or components.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+            <cause>User input is not checked for the '..' (dot dot) string</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to view the contents of any file (for example, databases, user information or configuration files) on the web server (under the permission restrictions of the web server user)</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/626.html" id="CWE-626">626</link>
+          </cwe>
+          <references>
+            <link target="http://phrack.org/issues.html?issue=55&amp;id=7#article">"Perl CGI problems" (by Rain Forest Puppy)</link>
+            <link target="http://lib.kharkov.ua/SECURITY/cgisecure.txt_with-big-pictures.html">"How To Remove Meta-characters From User-Supplied Data In CGI Scripts"</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Remove null bytes from all incoming strings.</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>ASP.NET provides several means to validate filenames before opening them. For example:</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** File Path Validation:</text>
+          </fixRecommendation>
+          <fixRecommendation type="PHP">
+            <text>** File Path Validation:</text>
+          </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attSqlInjectionChecks" Count="10">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>SQL Injection </name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>SQL Injection</name>
+            <reference>http://projects.webappsec.org/SQL-Injection</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The software constructs all or part of an SQL command using externally-influenced input, but it incorrectly neutralizes special elements that could modify the intended SQL command when sent to the database.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to view, modify or delete database entries and tables</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/89.html" id="CWE-89">89</link>
+          </cwe>
+          <references>
+            <link target="http://www.cgisecurity.com/lib/webappdis.doc">"Web Application Disassembly with ODBC Error Messages" (By David Litchfield)</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/sqlinjection/viewer.swf#recorded_advisory">SQL Injection Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>Here are two possible ways to protect your web application against SQL injection attacks:</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** Prepared Statements:</text>
+            </fixRecommendation>
+            <fixRecommendation type="PHP">
+              <text>** Filter User Input</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attLoginNotOverSSL" Count="4">
+        <RemediationID>fix_52720</RemediationID>
+        <advisory>
+          <name>Unencrypted Login Request</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Application Privacy Tests</name>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>During the application test123, it was detected that an unencrypted login request was sent to the server. Since some of the input fields used in a login process (for example: usernames, passwords, e-mail addresses, social security number, etc.) are personal and sensitive, it is recommended that they will be sent to the server over an encrypted connection (e.g. SSL).</text>
+            <text>Any information sent to the server as clear text, may be stolen and used later for identity theft or user impersonation.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sensitive input fields such as usernames, password and credit card numbers are passed unencrypted</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It may be possible to steal user login information such as usernames and passwords that are sent unencrypted</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/523.html" id="CWE-523">523</link>
+          </cwe>
+          <references>
+            <link target="http://business.ftc.gov/privacy-and-security/gramm-leach-bliley-act/">Financial Privacy: The Gramm-Leach Bliley Act</link>
+            <link target="http://www.hhs.gov/ocr/hipaa/">Health Insurance Portability and Accountability Act (HIPAA)</link>
+            <link target="http://www.sec.gov/spotlight/sarbanes-oxley.htm">Sarbanes-Oxley Act</link>
+            <link target="http://info.sen.ca.gov/pub/01-02/bill/sen/sb_1351-1400/sb_1386_bill_20020926_chaptered.html">California SB1386</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>1. Make sure that all login requests are sent encrypted to the server.</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attXPathInjection" Count="1">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>XPath Injection</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>XPath Injection</name>
+            <reference>http://projects.webappsec.org/XPath-Injection</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The software does not properly neutralize special elements that are used in XML, allowing attackers to modify the syntax, content, or commands of the XML before it is processed by an end system.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to access information stored in a sensitive data resource</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/91.html" id="CWE-91">91</link>
+          </cwe>
+          <references>
+            <link target="http://www.w3.org/TR/xpath">"XML Path Language (XPath) Version 1.0 - W3C Recommendation 16 November 1999"</link>
+            <link target="http://www.w3.org/TR/xslt">"XSL Transformations (XSLT) Version 1.0 - W3C Recommendation 16 November 1999"</link>
+            <link target="http://www.w3.org/TR/xquery/">"XQuery 1.0: An XML Query Language - W3C Working Draft 12 November 2003"</link>
+            <link target="http://hackbbs.org/article/book/wf/blind-xpath-injection.pdf">"Blind XPath injection"</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Assume all input is malicious. Use an appropriate combination of black lists and white lists to ensure only valid and expected input is processed by the system.</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>You can add input validation to Web Forms pages by using validation controls. Validation controls provide an easy-to-use mechanism for all common types of standard validation - for example, testing for valid dates or values within a range - plus ways to provide custom-written validation. In addition, validation controls allow you to completely customize how error information is displayed to the user. Validation controls can be used with any controls that are processed in a Web Forms page's class file, including both HTML and Web server controls.</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** Input Data Validation:</text>
+            </fixRecommendation>
+            <fixRecommendation type="PHP">
+              <text>** Input Data Validation:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>High</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attCrossSiteRequestForgery" Count="7">
+        <RemediationID>fix_60130</RemediationID>
+        <advisory>
+          <name>Cross-Site Request Forgery</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Cross-site Request Forgery</name>
+            <reference>http://projects.webappsec.org/Cross-Site-Request-Forgery</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>Even well-formed, valid, consistent requests may have been sent without the user's knowledge. Web applications should therefore examine all requests for signs that they are not legitimate. The result of this test123 indicates that the application being scanned does not do this.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Insufficient authentication method was used by the application</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/352.html" id="CWE-352">352</link>
+          </cwe>
+          <references>
+            <link target="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery wiki page</link>
+            <link target="http://www.net-security.org/dl/articles/JavaScript_Hijacking.pdf">"JavaScript Hijacking" by Fortify</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/csrf-cbt/viewer.swf#recorded_advisory">Cross-Site Request Forgery Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attHttpResponseSplitting" Count="1">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>HTTP Response Splitting</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>HTTP Response Splitting</name>
+            <reference>http://projects.webappsec.org/HTTP-Response-Splitting</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The software receives external input, but incorrectly neutralizes CR and LF characters before the data is included in outgoing HTTP headers.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to deface the site content through web-cache poisoning</securityRisk>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/113.html" id="CWE-113">113</link>
+          </cwe>
+          <references>
+            <text>Sanctum (currently IBM) has published a paper on the subject, titled:</text>
+            <link target="http://www-01.ibm.com/support/docview.wss?rs=3372&amp;context=SSW2NF&amp;dc=DA480&amp;uid=swg27019020&amp;loc=en_US&amp;cs=utf-8&amp;lang=en">"Divide and Conquer - HTTP Response Splitting, Web Cache Poisoning Attacks, and Related Topics"</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/httpresponsesplitting/viewer.swf#recorded_advisory">HTTP Response Splitting Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Assume all input is malicious. Use an appropriate combination of black lists and white lists to ensure only valid and expected input is processed by the system.</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>You can add input validation to Web Forms pages by using validation controls. Validation controls provide an easy-to-use mechanism for all common types of standard validation - for example, testing for valid dates or values within a range - plus ways to provide custom-written validation. In addition, validation controls allow you to completely customize how error information is displayed to the user. Validation controls can be used with any controls that are processed in a Web Forms page's class file, including both HTML and Web server controls.</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** Input Data Validation:</text>
+            </fixRecommendation>
+            <fixRecommendation type="PHP">
+              <text>** Input Data Validation:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attLinkInjection" Count="3">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>Link Injection (facilitates Cross-Site Request Forgery)</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Content Spoofing</name>
+            <reference>http://projects.webappsec.org/Content-Spoofing</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The software constructs all or part of a command, data structure, or record using externally-influenced input, but fails to neutralize elements that could modify how it is parsed or interpreted.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to persuade a naive user to supply sensitive information such as username, password, credit card number, social security number etc.</securityRisk>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+            <securityRisk>It is possible to upload, modify or delete web pages, scripts and files on the web server</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/74.html" id="CWE-74">74</link>
+          </cwe>
+          <references>
+            <link target="http://www.owasp.org/index.php/Cross-Site_Request_Forgery">OWASP Article</link>
+            <link target="http://www.cgisecurity.com/csrf-faq.html">The Cross-Site Request Forgery FAQ</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/csrf-cbt/viewer.swf#recorded_advisory">Cross-Site Request Forgery Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="jsOpenRedirect" Count="2">
+        <RemediationID>fix_61400</RemediationID>
+        <advisory>
+          <name>Open Redirect</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>URL Redirector Abuse</name>
+            <reference>http://projects.webappsec.org/URL-Redirector-Abuse</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>Phishing is a social engineering technique where an attacker masquerades as a legitimate entity with which the victim might do business in order to prompt the user to reveal some confidential information (frequently authentication credentials) that can later be used by an attacker. Phishing is essentially a form of information gathering or "fishing" for information.</text>
+            <br />
+            <text>An http parameter was found to hold a URL value and cause the web application to redirect the request to the specified URL. By modifying the URL value to a malicious site, an attacker may successfully launch a phishing scam and steal user credentials.</text>
+            <text>The fact that the server name in the modified link is identical to the original site helps the attacker by giving his phishing attempts a more reliable appearance.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>The web application performs a redirection to an external site</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible for an attacker to use the web server to attack other sites, which increases his or her anonymity</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/601.html" id="CWE-601">601</link>
+          </cwe>
+          <references>
+            <link target="http://www.ftc.gov/bcp/edu/pubs/consumer/alerts/alt127.shtm">FTC Consumer Alert - "How Not to Get Hooked by a 'Phishing' Scam"</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="phishingInFrames" Count="3">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>Phishing Through Frames</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Content Spoofing</name>
+            <reference>http://projects.webappsec.org/Content-Spoofing</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>Phishing is a social engineering technique where an attacker masquerades as a legitimate entity with which the victim might do business in order to prompt the user to reveal some confidential information (very frequently authentication credentials) that can later be used by an attacker. Phishing is essentially a form of information gathering or "fishing" for information.</text>
+            <br />
+            <text>It is possible for an attacker to inject a frame or an iframe tag with malicious content. An incautious user may browse it and not realize that he is leaving the original site and surfing to a malicious site. The attacker may then lure the user to login again, thus acquiring his login credentials.</text>
+            <text>The fact that the fake site is embedded in the original site helps the attacker by giving his phishing attempts a more reliable appearance.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to persuade a naive user to supply sensitive information such as username, password, credit card number, social security number etc.</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/79.html" id="CWE-79">79</link>
+          </cwe>
+          <references>
+            <link target="http://www.ftc.gov/bcp/edu/pubs/consumer/alerts/alt127.shtm">FTC Consumer Alert - "How Not to Get Hooked by a 'Phishing' Scam"</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="constTransient" Count="2">
+        <RemediationID>fix_53980</RemediationID>
+        <advisory>
+          <name>Session Identifier Not Updated</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Session Fixation</name>
+            <reference>http://projects.webappsec.org/Session-Fixation</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>Authenticating a user, or otherwise establishing a new user session, without invalidating any existing session identifier, gives an attacker the opportunity to steal authenticated sessions.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Insecure web application programming or configuration</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/613.html" id="CWE-613">613</link>
+          </cwe>
+          <references>
+            <link target="http://www.acrossecurity.com/papers/session_fixation.pdf">"Session Fixation Vulnerability in Web-based Applications", By Mitja Kolsek - Acros Security</link>
+            <link target="http://il2.php.net/session#session.security">PHP Manual, Session Handling Functions, Sessions and security</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Prevent user ability to manipulate session ID. Do not accept session IDs provided by the user's browser at login; always generate a new session to which the user will log in if successfully authenticated. </text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Medium</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="GD_autocompleteInForm" Count="2">
+        <RemediationID>fix_61640</RemediationID>
+        <advisory>
+          <name>Autocomplete HTML Attribute Not Disabled for Password Field</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Application Privacy Tests</name>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>The "autocomplete" attribute has been standardized in the HTML5 standard. W3C's site states that the attribute has two states, "on" and "off", and that omitting it altogether is equivalent to setting it to "on".</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Insecure web application programming or configuration</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It may be possible to bypass the web application's authentication mechanism</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>N/A</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/522.html" id="CWE-522">522</link>
+          </cwe>
+          <references />
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>If the "autocomplete" attribute is missing in the "password" field of the "input" element, add it and set it to "off".</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Low</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="GV_SQLErr" Count="14">
+        <RemediationID>fix_52000</RemediationID>
+        <advisory>
+          <name>Database Error Pattern Found</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>SQL Injection</name>
+            <reference>http://projects.webappsec.org/SQL-Injection</reference>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>AppScan discovered Database Errors in the test123 response, that may have been triggered by an attack other than SQL Injection.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>Sanitation of hazardous characters was not performed correctly on user input</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to view, modify or delete database entries and tables</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products.</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/209.html" id="CWE-209">209</link>
+          </cwe>
+          <references>
+            <link target="http://www.cgisecurity.com/lib/webappdis.doc">"Web Application Disassembly with ODBC Error Messages" (By David Litchfield)</link>
+            <link target="http://download.boulder.ibm.com/ibmdl/pub/software/dw/richmedia/rational/08/appscan_demos/sqlinjection/viewer.swf#recorded_advisory">SQL Injection Training Module</link>
+          </references>
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>There are several mitigation techniques:</text>
+            </fixRecommendation>
+            <fixRecommendation type="ASP.NET">
+              <text>Here are two possible ways to protect your web application against SQL injection attacks:</text>
+            </fixRecommendation>
+            <fixRecommendation type="J2EE">
+              <text>** Prepared Statements:</text>
+            </fixRecommendation>
+            <fixRecommendation type="PHP">
+              <text>** Filter User Input</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Low</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+      <IssueType ID="attRespCookieNotHttpOnlySessionCookie" Count="1">
+        <RemediationID>fix_52741</RemediationID>
+        <advisory>
+          <name>Missing HttpOnly Attribute in Session Cookie</name>
+          <testDescription>Application-level test123</testDescription>
+          <threatClassification>
+            <name>Application Privacy Tests</name>
+          </threatClassification>
+          <testTechnicalDescription>
+            <text>During the application test123, it was detected that the tested web application set a session cookie without the "HttpOnly" attribute. Since this session cookie does not contain the "HttpOnly" attribute, it might be accessed by a malicous script injected to the site, and its value can be stolen. Any information stored in session tokens may be stolen and used later for identity theft or user impersonation.</text>
+          </testTechnicalDescription>
+          <causes>
+            <cause>The web application sets session cookies without the HttpOnly attribute</cause>
+          </causes>
+          <securityRisks>
+            <securityRisk>It is possible to steal or manipulate customer session and cookies, which might be used to impersonate a legitimate user, allowing the hacker to view or alter user records, and to perform transactions as that user</securityRisk>
+          </securityRisks>
+          <affectedProducts>
+            <affectedProduct>This issue may affect different types of products</affectedProduct>
+          </affectedProducts>
+          <cwe>
+            <link target="http://cwe.mitre.org/data/definitions/653.html" id="CWE-653">653</link>
+          </cwe>
+          <references />
+          <fixRecommendations>
+            <fixRecommendation type="General">
+              <text>Basically the only required attribute for the cookie is the "name" field.</text>
+              <text>Common optional attributes are: "comment", "domain", "path", etc.</text>
+              <text>The "HttpOnly" attribute must be set accordingly in order to prevent session cookies from being accessed by scripts.</text>
+            </fixRecommendation>
+          </fixRecommendations>
+        </advisory>
+        <Severity>Low</Severity>
+        <Invasive>False</Invasive>
+      </IssueType>
+    </IssueTypes>
+    <Issues>
+      <Issue IssueTypeID="attCrossSiteScripting" Noise="False">
+        <RemediationID>fix_58915</RemediationID>
+        <Url>http://204.16.90.54/search.aspx</Url>
+        <Severity>High</Severity>
+        <Entity Name="txtSearch" Type="Parameter" />
+        <Variant ID="184">
+          <Comments>
+            <Total>1</Total>
+            <Comment>
+              <Text>- Dave- Hard code this into the final script - Possible security problem.
+        Re-generated every Tuesday and old files are saved to .bak format at L:\backup\website\oldfiles    </Text>
+              <Url>http://204.16.90.54/demo.testfire.net/feedback.aspx</Url>
+            </Comment>
+          </Comments>
+          <Difference>Parameter:  txtSearch=1234 -&gt; txtSearch=1234%3Cscript%3Ealert%2861%29%3C%2Fscript%3E</Difference>
+          <Reasoning>The test123 result seems to indicate a vulnerability because Appscan successfully embedded a script in the response, which will be executed when the page loads in the user's browser.</Reasoning>
+          <AdditionalData />
+          <CWE>79</CWE>
+          <CVE />
+          <ValidationDataLocationAtTestResponse>
+            <Validation Location="7508" Length="26" String="&lt;script&gt;alert(61)&lt;/script&gt;" />
+          </ValidationDataLocationAtTestResponse>
+          <OriginalHttpTraffic>GET http://204.16.90.54/search.aspx?txtSearch=1234 HTTP/1.1
+Cookie: ASP.NET_SessionId=cypj5rb0p1y15ray1yubos45; amSessionId=3383121270; amUserInfo=UserName=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==&amp;Password=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==; amUserId=1; lang=
+Accept-Language: en-US
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Referer: http://204.16.90.54/demo.testfire.net/bank/customize.aspx
+Host: 204.16.90.54
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
+Proxy-Connection: Keep-Alive
+
+
+HTTP/1.1 200 OK
+Date: Fri, 28 Jun 2013 08:38:40 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+X-AspNet-Version: 2.0.50727
+Cache-Control: private
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 7545
+Vary: Accept-Encoding
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+
+
+          </OriginalHttpTraffic>
+          <TestHttpTraffic>GET http://204.16.90.54/search.aspx?txtSearch=1234%3Cscript%3Ealert%2861%29%3C%2Fscript%3E HTTP/1.1
+Cookie: ASP.NET_SessionId=y5euqq55pyy5gbvtab4mv03c; amSessionId=41137127825; amUserInfo=UserName=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==&amp;Password=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==; amUserId=1; lang=
+Accept-Language: en-US
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Referer: http://204.16.90.54/demo.testfire.net/bank/customize.aspx
+Host: 204.16.90.54
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)
+Proxy-Connection: Keep-Alive
+
+
+HTTP/1.1 200 OK
+Date: Fri, 28 Jun 2013 09:20:20 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+X-AspNet-Version: 2.0.50727
+Cache-Control: private
+Content-Type: text/html; charset=iso-8859-1
+Content-Length: 7907
+Vary: Accept-Encoding
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+        </TestHttpTraffic>
+        </Variant>
+      </Issue>
+      <Issue IssueTypeID="GD_PathDisclosure" Noise="True">
+        <Url>https://www.stage.huntington.com/Presentation/Scripts/toolkit.js</Url>
+        <Severity ChangedByTheUser="false">Informational</Severity>
+        <CVSS ChangedByTheUser="false">
+          <Score>0.0</Score>
+          <BaseVector>AV:N/AC:L/Au:N/C:N/I:N/A:N</BaseVector>
+          <TemporalVector>E:ND/RL:ND/RC:ND</TemporalVector>
+          <EnvironmentalVector>CDP:ND/TD:ND/CR:ND/IR:ND/AR:ND</EnvironmentalVector>
+        </CVSS>
+        <Entity Name="toolkit.js" Type="Page" />
+        <Variant ID="19">
+          <Comments />
+        </Variant>
+      </Issue>
+    </Issues>
+  </Results>
+  <ApplicationData>
+    <Cookies>
+      <Total>6</Total>
+      <Cookie>
+        <Value>5qoj0pqcygnpx045fm1fj3m2</Value>
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstRequestedInUrl>
+        <Domain>204.16.90.54</Domain>
+        <Expires />
+        <Secure>False</Secure>
+        <Name>ASP.NET_SessionId</Name>
+      </Cookie>
+      <Cookie>
+        <Value />
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/logout.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl />
+        <Domain>204.16.90.54</Domain>
+        <Expires>27/06/2013 6:41:15 PM</Expires>
+        <Secure>False</Secure>
+        <Name>amCreditOffer</Name>
+      </Cookie>
+      <Cookie>
+        <Value>34150122092</Value>
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstRequestedInUrl>
+        <Domain>204.16.90.54</Domain>
+        <Expires />
+        <Secure>False</Secure>
+        <Name>amSessionId</Name>
+      </Cookie>
+      <Cookie>
+        <Value>1</Value>
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstRequestedInUrl>
+        <Domain>204.16.90.54</Domain>
+        <Expires />
+        <Secure>False</Secure>
+        <Name>amUserId</Name>
+      </Cookie>
+      <Cookie>
+        <Value>UserName=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==&amp;Password=JyBvciAnID0gJyBhbmQgJyA9ICcgb3IgJw==</Value>
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl>http://204.16.90.54/demo.testfire.net/bank/login.aspx</FirstRequestedInUrl>
+        <Domain>204.16.90.54</Domain>
+        <Expires>29/06/2013 7:58:13 PM</Expires>
+        <Secure>False</Secure>
+        <Name>amUserInfo</Name>
+      </Cookie>
+      <Cookie>
+        <Value />
+        <FirstSetInUrl>http://204.16.90.54/demo.testfire.net/bank/customize.aspx</FirstSetInUrl>
+        <FirstRequestedInUrl>http://204.16.90.54/demo.testfire.net/default.aspx?content=business.htm</FirstRequestedInUrl>
+        <Domain>204.16.90.54</Domain>
+        <Expires />
+        <Secure>False</Secure>
+        <Name>lang</Name>
+      </Cookie>
+    </Cookies>
+    <JavaScripts>
+      <Total>18</Total>
+      <JavaScript>
+        <Text>
+		_uacct = "1234abc";
+		urchinTracker();
+		</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/default.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>window.open('disclaimer.htm?url=http://www.netscape.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200'); return false;</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/default.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>window.open('disclaimer.htm?url=http://www.microsoft.com', '_blank', 'status=no,location=no,menubar=no,resizable=no,scrollbars=no,toolbar=no,width=450,height=200'); return false;</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/default.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+
+		var h = document.location.hash.substring(1);
+		if (h &amp;&amp; h != "") {
+			var re = new RegExp(".+@.+");
+			if (h.match(re)) {
+				document.getElementById("email").innerHTML += " ("+h+")";
+			}
+		}
+
+		</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/high_yield_investments.htm</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+
+    function go() {
+	    var iPos = document.URL.indexOf("url=")+4;
+    	var sDst = document.URL.substring(iPos,document.URL.length); 
+        if (window.opener) {
+      		window.opener.location.href = sDst;
+      		cl();
+        } else {
+        	window.location.href = sDst;
+        }
+    }
+
+    function cl() {
+      window.close();
+    }
+
+    var iPos = document.URL.indexOf("url=")+4;
+  	var sDst = document.URL.substring(iPos,document.URL.length);
+    // if redirection is in the application's domain, don't ask for authorization
+	if ( sDst.indexOf("http") == 0 &amp;&amp; sDst.indexOf(document.location.hostname) != -1 ) {
+		if (window.opener) {
+      		window.opener.location.href = "http" + sDst.substring(4);
+      		cl();
+        } else {
+        	window.location.href = "http" + sDst.substring(4);
+        }
+	}
+
+	</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/disclaimer.htm</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>document.write(encodeURI(sDst));</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/disclaimer.htm</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>go();return false;</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/disclaimer.htm</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>cl();return false;</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/disclaimer.htm</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+function confirmEmail(sEmail) {
+  var msg = null;
+  if (sEmail != "") {
+    var emailFilter=/^[\w\d\.\%-]+@[\w\d\.\%-]+\.\w{2,4}$/;
+    if (!(emailFilter.test123(sEmail))) {
+      var illegalChars= /[^\w\d\.\%\-@]/;
+      if (sEmail.match(illegalChars)) {
+          msg = "Your email can only contain alphanumeric\ncharacters and the following:  @.%-\n\n";
+      } else {
+        msg = "The email does not appear to be valid.  Please enter it again.\n\n";
+      }
+    }
+  } else {
+    msg = "Please enter an email address.\n\n";
+  }
+  if (msg != null) {
+      alert(msg);
+      return false;
+  } else {
+      return true;
+  }
+}
+</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/subscribe.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>return confirmEmail(txtEmail.value);</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/subscribe.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+function setfocus() {
+    if (document.login.uid.value=="") {
+      document.login.uid.focus();
+    } else {
+      document.login.passw.focus();
+    }
+}
+
+function confirminput(myform) {
+    if (myform.uid.value.length &amp;&amp; myform.passw.value.length) {
+      return (true);
+    } else if (!(myform.uid.value.length)) {
+      myform.reset();
+      myform.uid.focus();
+      alert ("You must enter a valid username");
+      return (false);
+    } else {
+      myform.passw.focus();
+      alert ("You must enter a valid password");
+      return (false);
+    }
+}
+window.onload = setfocus;
+</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/login.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>return (confirminput(login));</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/login.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+
+var oXML;
+
+if(window.XMLHttpRequest) {
+  try  {
+    oXML = new XMLHttpRequest()
+  } catch(e) {}
+} else if(window.ActiveXObject) {
+  try {
+    oXML = new ActiveXObject("Msxml2.XMLHTTP")
+  } catch(e) {
+    try {
+      oXML = new ActiveXObject("Microsoft.XMLHTTP")
+    } catch(e) {}
+  }
+}
+
+ function doTransfer()
+ {
+  var dbt=document.getElementById("debitAccount").value;
+  var cdt=document.getElementById("creditAccount").value;
+  var amt=document.getElementById("transferAmount").value;
+
+  //&lt;!-- Some sample test123 accounts //--&gt;
+  if(dbt.length==0){dbt=20;}
+  if(cdt.length==0){cdt=21;}
+
+  oXML.open("POST", "ws.asmx", true);
+
+  oXML.onreadystatechange=function()
+  {
+    var curNode = null;
+    if (oXML.readyState==4)
+    {
+      try {
+        //curNode = oXML.responseXML.selectSingleNode("//Message");
+        curNode = oXML.responseXML.selectSingleNode("//soap:Body").firstChild.firstChild.firstChild.nextSibling.firstChild.nodeValue;
+      }
+      catch(e)
+      {
+        //curNode = oXML.responseXML.selectSingleNode("//faultstring");
+        curNode = oXML.responseXML.selectSingleNode("//soap:Body").firstChild.firstChild.nextSibling.firstChild.nodeValue;
+      }
+      if (curNode)
+        document.getElementById("soapResp").innerHTML = "&lt;span style='color: Red'&gt;" + curNode + "&lt;/span&gt;";
+      else
+        document.getElementById("soapResp").innerHTML = "&lt;span style='color: Red'&gt;An unknown error occurred.&lt;/span&gt;";
+    }
+  }
+
+  oXML.setRequestHeader("SOAPAction", "http://www.altoromutual.com/bank/ws/TransferBalance");
+  oXML.setRequestHeader("Content-Type", "text/xml");
+
+  var reqBody = '&lt;?xml version="1.0" encoding="UTF-8"?&gt;'+"\n"+
+      '&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"'+"\n"+
+      ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+"\n"+
+      ' xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;'+"\n"+
+      ' &lt;soap:Body&gt;'+"\n"+
+      '  &lt;TransferBalance xmlns="http://www.altoromutual.com/bank/ws/"&gt;'+"\n"+
+      '   &lt;transDetails&gt;'+"\n"+
+      '    &lt;transferDate&gt;2000-01-01&lt;/transferDate&gt;'+"\n"+
+      '    &lt;debitAccount&gt;' + dbt + '&lt;/debitAccount&gt;'+"\n"+
+      '    &lt;creditAccount&gt;' + cdt + '&lt;/creditAccount&gt;'+"\n"+
+      '    &lt;transferAmount&gt;' + amt + '&lt;/transferAmount&gt;'+"\n"+
+      '   &lt;/transDetails&gt;'+"\n"+
+      '  &lt;/TransferBalance&gt;'+"\n"+
+      ' &lt;/soap:Body&gt;'+"\n"+
+      '&lt;/soap:Envelope&gt;';
+
+     oXML.send (reqBody);
+}
+
+
+</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/transfer.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>doTransfer();</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/transfer.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>// mozXPath [http://km0ti0n.blunted.co.uk/mozxpath/] km0ti0n@gmail.com
+// Code licensed under Creative Commons Attribution-ShareAlike License 
+// http://creativecommons.org/licenses/by-sa/2.5/
+if( document.implementation.hasFeature("XPath", "3.0") )
+{
+	XMLDocument.prototype.selectNodes = function(cXPathString, xNode)
+	{
+		if( !xNode ) { xNode = this; } 
+
+		var oNSResolver = this.createNSResolver(this.documentElement)
+		var aItems = this.evaluate(cXPathString, xNode, oNSResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null)
+		var aResult = [];
+		for( var i = 0; i &lt; aItems.snapshotLength; i++)
+		{
+			aResult[i] =  aItems.snapshotItem(i);
+		}
+		
+		return aResult;
+	}
+	XMLDocument.prototype.selectSingleNode = function(cXPathString, xNode)
+	{
+		if( !xNode ) { xNode = this; } 
+
+		var xItems = this.selectNodes(cXPathString, xNode);
+		if( xItems.length &gt; 0 )
+		{
+			return xItems[0];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	Element.prototype.selectNodes = function(cXPathString)
+	{
+		if(this.ownerDocument.selectNodes)
+		{
+			return this.ownerDocument.selectNodes(cXPathString, this);
+		}
+		else{throw "For XML Elements Only";}
+	}
+
+	Element.prototype.selectSingleNode = function(cXPathString)
+	{	
+		if(this.ownerDocument.selectSingleNode)
+		{
+			return this.ownerDocument.selectSingleNode(cXPathString, this);
+		}
+		else{throw "For XML Elements Only";}
+	}
+
+}</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/mozxpath.js</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>
+
+function confirmpass(myform)
+{
+  if (myform.password1.value.length &amp;&amp; (myform.password1.value==myform.password2.value))
+  {
+    return true;
+  }
+  else
+  {
+    myform.password1.value="";
+    myform.password2.value="";
+    myform.password1.focus();
+    alert ("Passwords do not match");
+    return false;
+  }
+
+}
+</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/admin/admin.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>return confirmpass(this);</Text>
+        <Url>http://204.16.90.54/demo.testfire.net/admin/admin.aspx</Url>
+      </JavaScript>
+      <JavaScript>
+        <Text>// mozXPath [http://km0ti0n.blunted.co.uk/mozxpath/] km0ti0n@gmail.com
+// Code licensed under Creative Commons Attribution-ShareAlike License 
+// http://creativecommons.org/licenses/by-sa/2.5/
+if( document.implementation.hasFeature("XPath", "3.0") )
+{
+	XMLDocument.prototype.selectNodes = function(cXPathString, xNode)
+	{
+		if( !xNode ) { xNode = this; } 
+
+		var oNSResolver = this.createNSResolver(this.documentElement)
+		var aItems = this.evaluate(cXPathString, xNode, oNSResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null)
+		var aResult = [];
+		for( var i = 0; i &lt; aItems.snapshotLength; i++)
+		{
+			aResult[i] =  aItems.snapshotItem(i);
+		}
+		
+		return aResult;
+	}
+	XMLDocument.prototype.selectSingleNode = function(cXPathString, xNode)
+	{
+		if( !xNode ) { xNode = this; } 
+
+		var xItems = this.selectNodes(cXPathString, xNode);
+		if( xItems.length &gt; 0 )
+		{
+			return xItems[0];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	Element.prototype.selectNodes = function(cXPathString)
+	{
+		if(this.ownerDocument.selectNodes)
+		{
+			return this.ownerDocument.selectNodes(cXPathString, this);
+		}
+		else{throw "For XML Elements Only";}
+	}
+
+	Element.prototype.selectSingleNode = function(cXPathString)
+	{	
+		if(this.ownerDocument.selectSingleNode)
+		{
+			return this.ownerDocument.selectSingleNode(cXPathString, this);
+		}
+		else{throw "For XML Elements Only";}
+	}
+
+}</Text>
+        <Url>http://204.16.90.54/bank/mozxpath.js</Url>
+      </JavaScript>
+    </JavaScripts>
+    <Comments>
+      <Total>3</Total>
+      <Comment>
+        <Text>- Dave- Hard code this into the final script - Possible security problem.
+  Re-generated every Tuesday and old files are saved to .bak format at L:\backup\website\oldfiles    </Text>
+        <Url>http://204.16.90.54/demo.testfire.net/feedback.aspx</Url>
+      </Comment>
+      <Comment>
+        <Text> To get the latest admin login, please contact SiteOps at 415-555-6159 </Text>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/login.aspx</Url>
+      </Comment>
+      <Comment>
+        <Text> Be careful what you change.  All changes are made directly to Altoro.mdb database. </Text>
+        <Url>http://204.16.90.54/demo.testfire.net/admin/admin.aspx</Url>
+      </Comment>
+    </Comments>
+    <ScriptParameters>
+      <Total>1</Total>
+      <ScriptParameter>
+        <Name>transferAmount</Name>
+        <Values>
+          <Value>1234</Value>
+        </Values>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/transfer.aspx</Url>
+        <Type>Text</Type>
+      </ScriptParameter>
+    </ScriptParameters>
+    <VisitedLinks>
+      <Total>1</Total>
+      <VisitedLink>
+        <Url>http://204.16.90.54/demo.testfire.net/bank/login.aspx</Url>
+      </VisitedLink>
+    </VisitedLinks>
+    <BrokenLinks>
+      <Total>1</Total>
+      <BrokenLink>
+        <Reason>Response Status '500' - Internal Server Error</Reason>
+        <Url>http://204.16.90.54/demo.testfire.net/comment.aspx</Url>
+      </BrokenLink>
+    </BrokenLinks>
+    <FilteredLinks>
+      <Total>1</Total>
+      <FilteredLink>
+        <Reason>File Extension</Reason>
+        <Url>http://204.16.90.54/demo.testfire.net/style.css</Url>
+      </FilteredLink>
+    </FilteredLinks>
+  </ApplicationData>
+</XmlReport>

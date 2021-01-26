@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<NessusClientData_v2>
+  <Policy>
+    <policyName>Advanced Scan</policyName>
+    <Preferences>
+      <ServerPreferences>
+        <preference>
+          <name>service_detection.search_for_ssl</name>
+          <value>yes</value>
+        </preference>
+        <preference>
+          <name>plugin_set</name>
+          <value>11213;</value>
+        </preference>
+      </ServerPreferences>
+    </Preferences>
+  </Policy>
+  <Report>
+    <ReportHost name="vlab.example.com">
+      <HostProperties>
+        <tag name="HOST_END">Thu Jun  8 22:29:55 2017</tag>
+        <tag name="HOST_START">Thu Jun  8 22:29:37 2017</tag>
+      </HostProperties>
+      <ReportItem pluginFamily="Port scanners" pluginID="10180" pluginName="Ping the remote host" port="0" protocol="tcp" severity="0">
+        <description>This plugin attempts to determine if the remote host is alive using one or more ping types :
+
+  - An ARP ping, provided the host is on the local subnet     and Nessus is running over ethernet.
+
+  - An ICMP ping.
+
+  - A TCP ping, in which the plugin sends to the remote host     a packet with the flag SYN, and the host will reply with     a RST or a SYN/ACK.
+
+  - A UDP ping (DNS, RPC, NTP, etc).</description>
+        <fname>ping_host.nasl</fname>
+        <plugin_modification_date>2014/06/04</plugin_modification_date>
+        <plugin_name>Ping the remote host</plugin_name>
+        <plugin_publication_date>1999/06/24</plugin_publication_date>
+        <plugin_type>remote</plugin_type>
+        <risk_factor>None</risk_factor>
+        <script_version>2.12</script_version>
+        <solution>n/a</solution>
+        <synopsis>It was possible to identify the status of the remote host (alive or dead)</synopsis>
+        <plugin_output>The remote host seems to be a RiverHead device, or some sort of decoy (it
+returns a SYN|ACK for any port), so Nessus will not scan it. If you want
+to force a scan of this host, disable the 'ping' plugin and restart a
+scan.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+    <ReportHost name="10.0.10.96">
+      <HostProperties>
+        <tag name="HOST_END">Wed Aug 17 13:50:46 2020</tag>
+        <tag name="operating-system">EPSON Stylus Printer
+Linksys Wireless Access Point</tag>
+        <tag name="mac-address">00:a9:c0:00:60:be</tag>
+        <tag name="host-ip">10.0.10.96</tag>
+        <tag name="HOST_START">Wed Aug 17 13:47:29 2020</tag>
+        <tag name="host-uuid">04490c06-6d11-423a-9c92-b07a215c198f</tag>
+      </HostProperties>
+      <ReportItem pluginFamily="Web Servers" pluginID="11213" pluginName="HTTP TRACE / TRACK Methods Allowed" port="80" protocol="tcp" severity="2">
+        <exploitability_ease>Exploits are available</exploitability_ease>
+        <vuln_publication_date>2003/01/20</vuln_publication_date>
+        <cvss_temporal_vector>CVSS2#E:F/RL:W/RC:C</cvss_temporal_vector>
+        <solution><![CDATA[Disable these methods.  Refer to the plugin output for more information.]]></solution>
+        <cvss_temporal_score>3.9</cvss_temporal_score>
+        <risk_factor>Medium</risk_factor>
+        <description>The remote webserver supports the TRACE and/or TRACK methods.  TRACE
+and TRACK are HTTP methods that are used to debug web server
+connections.</description>
+        <plugin_publication_date>2003/01/23</plugin_publication_date>
+        <cvss_vector>CVSS2#AV:N/AC:M/Au:N/C:P/I:N/A:N</cvss_vector>
+        <synopsis>Debugging functions are enabled on the remote web server.</synopsis>
+        <see_also>http://www.cgisecurity.com/whitehat-mirror/WH-WhitePaper_XST_ebook.pdf</see_also>
+        <see_also>http://www.apacheweek.com/issues/03-01-24</see_also>
+        <see_also>http://www.kb.cert.org/vuls/id/288308</see_also>
+        <see_also>http://www.kb.cert.org/vuls/id/867593</see_also>
+        <see_also>http://sunsolve.sun.com/search/document.do?assetkey=1-66-200942-1</see_also>
+        <exploit_available>true</exploit_available>
+        <plugin_modification_date>2010/10/06</plugin_modification_date>
+        <cvss_base_score>4.3</cvss_base_score>
+        <cve>CVE-2003-1567</cve>
+        <cve>CVE-2004-2320</cve>
+        <cve>CVE-2010-0386</cve>
+        <bid>9506</bid>
+        <bid>9561</bid>
+        <bid>11604</bid>
+        <bid>33374</bid>
+        <bid>37995</bid>
+        <xref>OSVDB:877</xref>
+        <xref>OSVDB:3726</xref>
+        <xref>OSVDB:5648</xref>
+        <xref>OSVDB:50485</xref>
+        <xref>CWE:16</xref>
+        <plugin_output>To disable these methods, add the following lines for each virtual
+host in your configuration file :
+
+    RewriteEngine on
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+    RewriteRule .* - [F]
+
+Alternatively, note that Apache versions 1.3.34, 2.0.55, and 2.2
+support disabling the TRACE method natively via the 'TraceEnable'
+directive.
+
+Nessus sent the following TRACE request :
+
+------------------------------ snip ------------------------------
+TRACE /Nessus1233259395.html HTTP/1.1
+Connection: Close
+Host: lazfacts.com
+Pragma: no-cache
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
+Accept-Language: en
+Accept-Charset: iso-8859-1,*,utf-8
+
+------------------------------ snip ------------------------------
+
+and received the following response from the remote server :
+
+------------------------------ snip ------------------------------
+HTTP/1.1 200 OK
+Date: Thu, 24 Feb 2011 20:24:14 GMT
+Server: Apache/2.2.9 (Ubuntu) Phusion_Passenger/2.1.3
+Keep-Alive: timeout=15, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: message/http
+
+
+TRACE /Nessus1233259395.html HTTP/1.1
+Connection: Keep-Alive
+Host: lazfacts.com
+Pragma: no-cache
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
+Accept-Language: en
+Accept-Charset: iso-8859-1,*,utf-8
+
+------------------------------ snip ------------------------------
+</plugin_output>
+        <plugin_version>$Revision: 1.46 $</plugin_version>
+      </ReportItem>
+    </ReportHost>
+    <ReportHost name="167.219.92.132">
+      <HostProperties>
+        <tag name="scan-progress">514-514/96488-96488</tag>
+        <tag name="HOST_START">Thu May  3 20:36:55 2018</tag>
+        <tag name="host-ip">167.219.92.132</tag>
+        <tag name="HOST_END">Thu May  3 20:45:36 2018</tag>
+        <tag name="traceroute-hop-0">?</tag>
+        <tag name="os">other</tag>
+        <tag name="patch-summary-total-cves">0</tag>
+      </HostProperties>
+    </ReportHost>
+  </Report>
+</NessusClientData_v2>

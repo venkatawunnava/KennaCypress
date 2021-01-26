@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CxXMLResults InitiatorName="LAURENT" Owner="LAURENT" ScanId="15" ProjectId="15" ProjectName="CanIparkHere" TeamFullPathOnReportDate="CxServer\LAURENT\" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15" ScanStart="Friday, August 10, 2018 1:45:52 PM" Preset="Checkmarx Default" ScanTime="00h:01m:23s" LinesOfCodeScanned="14512" FilesScanned="62" ReportCreationTime="Monday, August 27, 2018 8:51:14 AM" Team="SP" CheckmarxVersion="8.7.0 HF2" ScanComments="master/debda7e45813c162f0c94a57f745c0a9a8e732fa" ScanType="Full" SourceOrigin="LocalPath" Visibility="Public">
+  <Query id="427" cweId="79" categories="PCI" name="Reflected_XSS_All_Clients" group="CSharp_High_Risk" Severity="High" Language="PHP" LanguageHash="0831671993165974" LanguageChangeDate="2018-06-10T00:00:00.0000000" SeverityIndex="3" QueryPath="PHP\Cx\PHP Server Side Vulnerabilities\Stored XSS Version:1" QueryVersionCode="84360567">
+    <Result NodeId="15001" FileName="CCUtility.cs" Status="New" Line="159" Column="26" FalsePositive="False" Severity="High" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=1" SeverityIndex="3">
+      <Path ResultId="15" PathId="1" SimilarityId="495037149">
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>159</Line>
+          <Column>26</Column>
+          <NodeId>1</NodeId>
+          <Name>QueryString_ParamName</Name>
+          <Type />
+          <Length>11</Length>
+          <Snippet>
+            <Line>
+              <Number>159</Number>
+              <Code>string Param = Request.QueryString[ParamName];</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>159</Line>
+          <Column>10</Column>
+          <NodeId>2</NodeId>
+          <Name>Param</Name>
+          <Type />
+          <Length>5</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>165</Line>
+          <Column>11</Column>
+          <NodeId>3</NodeId>
+          <Name>Param</Name>
+          <Type />
+          <Length>5</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>20</Column>
+          <NodeId>4</NodeId>
+          <Name>GetParam</Name>
+          <Type />
+          <Length>8</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>3</Column>
+          <NodeId>5</NodeId>
+          <Name>pValue</Name>
+          <Type />
+          <Length>6</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>64</Column>
+          <NodeId>6</NodeId>
+          <Name>pValue</Name>
+          <Type />
+          <Length>6</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>57</Column>
+          <NodeId>7</NodeId>
+          <Name>Text</Name>
+          <Type />
+          <Length>4</Length>
+          <Snippet>
+            <Line>
+              <Number>225</Number>
+              <Code>pValue = Utility.GetParam(&amp;quot;order_id&amp;quot;);Orders_order_id.Text = pValue;</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="15002" FileName="CCUtility.cs" Status="New" Line="161" Column="20" FalsePositive="True" Severity="High" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=2" SeverityIndex="3">
+      <Path ResultId="15" PathId="2" SimilarityId="-436294970">
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>161</Line>
+          <Column>20</Column>
+          <NodeId>1</NodeId>
+          <Name>Form</Name>
+          <Type />
+          <Length>4</Length>
+          <Snippet>
+            <Line>
+              <Number>161</Number>
+              <Code>Param = Request.Form[ParamName];</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>161</Line>
+          <Column>4</Column>
+          <NodeId>2</NodeId>
+          <Name>Param</Name>
+          <Type />
+          <Length>5</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>165</Line>
+          <Column>11</Column>
+          <NodeId>3</NodeId>
+          <Name>Param</Name>
+          <Type />
+          <Length>5</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>20</Column>
+          <NodeId>4</NodeId>
+          <Name>GetParam</Name>
+          <Type />
+          <Length>8</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>3</Column>
+          <NodeId>5</NodeId>
+          <Name>pValue</Name>
+          <Type />
+          <Length>6</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>64</Column>
+          <NodeId>6</NodeId>
+          <Name>pValue</Name>
+          <Type />
+          <Length>6</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>OrdersRecord.cs</FileName>
+          <Line>225</Line>
+          <Column>57</Column>
+          <NodeId>7</NodeId>
+          <Name>Text</Name>
+          <Type />
+          <Length>4</Length>
+          <Snippet>
+            <Line>
+              <Number>225</Number>
+              <Code>pValue = Utility.GetParam(&amp;quot;order_id&amp;quot;);Orders_order_id.Text = pValue;</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="15003" FileName="CCUtility.cs" Status="New" Line="116" Column="12" FalsePositive="False" Severity="High" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=3" SeverityIndex="3">
+      <Path ResultId="15" PathId="3" SimilarityId="1480111415">
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>116</Line>
+          <Column>12</Column>
+          <NodeId>1</NodeId>
+          <Name>row</Name>
+          <Type />
+          <Length>3</Length>
+          <Snippet>
+            <Line>
+              <Number>116</Number>
+              <Code>return row[field].ToString();</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>116</Line>
+          <Column>23</Column>
+          <NodeId>2</NodeId>
+          <Name>ToString</Name>
+          <Type />
+          <Length>8</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>BookDetail.cs</FileName>
+          <Line>507</Line>
+          <Column>37</Column>
+          <NodeId>3</NodeId>
+          <Name>GetValue</Name>
+          <Type />
+          <Length>8</Length>
+        </PathNode>
+        <PathNode>
+          <FileName>BookDetail.cs</FileName>
+          <Line>507</Line>
+          <Column>21</Column>
+          <NodeId>4</NodeId>
+          <Name>Text</Name>
+          <Type />
+          <Length>4</Length>
+          <Snippet>
+            <Line>
+              <Number>507</Number>
+              <Code>Rating_rating_view.Text =CCUtility.GetValue(row, &amp;quot;rating&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+  </Query>
+  <Query id="464" cweId="10020" categories="PCI" name="Cross_Site_History_Manipulation" group="CSharp_Medium_Threat" Severity="Medium" Language="PHP" LanguageHash="0831671993165974" LanguageChangeDate="2018-06-10T00:00:00.0000000" SeverityIndex="2" QueryPath="PHP\Cx\PHP Medium Threat\Missing HSTS Header Version:1" QueryVersionCode="118674716">
+    <Result NodeId="150115" FileName="CCUtility.cs" Status="New" Line="276" Column="3" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=115" SeverityIndex="2">
+      <Path ResultId="15" PathId="115" SimilarityId="-93908193">
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>276</Line>
+          <Column>3</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>276</Number>
+              <Code>if (Session[&amp;quot;UserID&amp;quot;] == null || Session[&amp;quot;UserID&amp;quot;].ToString().Length == 0) {</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150116" FileName="CCUtility.cs" Status="New" Line="279" Column="4" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=116" SeverityIndex="2">
+      <Path ResultId="15" PathId="116" SimilarityId="-93908191">
+        <PathNode>
+          <FileName>CCUtility.cs</FileName>
+          <Line>279</Line>
+          <Column>4</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>279</Number>
+              <Code>if (Int16.Parse(Session[&amp;quot;UserRights&amp;quot;].ToString()) &amp;lt; iLevel)</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150117" FileName="BookDetail.cs" Status="New" Line="448" Column="1" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=117" SeverityIndex="2">
+      <Path ResultId="15" PathId="117" SimilarityId="-338544637">
+        <PathNode>
+          <FileName>BookDetail.cs</FileName>
+          <Line>448</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>448</Number>
+              <Code>if(bResult)Response.Redirect(Order_FormAction+&amp;quot;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150118" FileName="BookDetail.cs" Status="New" Line="629" Column="1" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=118" SeverityIndex="2">
+      <Path ResultId="15" PathId="118" SimilarityId="-338544637">
+        <PathNode>
+          <FileName>BookDetail.cs</FileName>
+          <Line>629</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>629</Number>
+              <Code>if(bResult)Response.Redirect(Rating_FormAction+&amp;quot;item_id=&amp;quot; + Server.UrlEncode(Utility.GetParam(&amp;quot;item_id&amp;quot;)) + &amp;quot;&amp;amp;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150119" FileName="BookMaint.cs" Status="New" Line="415" Column="1" FalsePositive="False" Severity="Low" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=119" SeverityIndex="2">
+      <Path ResultId="15" PathId="119" SimilarityId="409486433">
+        <PathNode>
+          <FileName>BookMaint.cs</FileName>
+          <Line>415</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>415</Number>
+              <Code>if(bResult)Response.Redirect(Book_FormAction+&amp;quot;category_id=&amp;quot; + Server.UrlEncode(Utility.GetParam(&amp;quot;category_id&amp;quot;)) + &amp;quot;&amp;amp;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150120" FileName="CardTypesRecord.cs" Status="New" Line="358" Column="1" FalsePositive="False" Severity="Info" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=120" SeverityIndex="2">
+      <Path ResultId="15" PathId="120" SimilarityId="-1741603943">
+        <PathNode>
+          <FileName>CardTypesRecord.cs</FileName>
+          <Line>358</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>358</Number>
+              <Code>if(bResult)Response.Redirect(CardTypes_FormAction+&amp;quot;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150121" FileName="CategoriesRecord.cs" Status="New" Line="358" Column="1" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=121" SeverityIndex="2">
+      <Path ResultId="15" PathId="121" SimilarityId="2128837026">
+        <PathNode>
+          <FileName>CategoriesRecord.cs</FileName>
+          <Line>358</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>358</Number>
+              <Code>if(bResult)Response.Redirect(Categories_FormAction+&amp;quot;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+    <Result NodeId="150122" FileName="EditorialCatRecord.cs" Status="New" Line="358" Column="1" FalsePositive="False" Severity="Medium" AssignToUser="" state="0" Remark="" DeepLink="http://LAURENT-LAPTOP/CxWebClient/ViewerMain.aspx?scanid=15&amp;projectid=15&amp;pathid=122" SeverityIndex="2">
+      <Path ResultId="15" PathId="122" SimilarityId="561711677">
+        <PathNode>
+          <FileName>EditorialCatRecord.cs</FileName>
+          <Line>358</Line>
+          <Column>1</Column>
+          <NodeId>1</NodeId>
+          <Name>if</Name>
+          <Type />
+          <Length>2</Length>
+          <Snippet>
+            <Line>
+              <Number>358</Number>
+              <Code>if(bResult)Response.Redirect(editorial_categories_FormAction+&amp;quot;&amp;quot;);</Code>
+            </Line>
+          </Snippet>
+        </PathNode>
+      </Path>
+    </Result>
+  </Query>
+</CxXMLResults>

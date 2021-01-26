@@ -1,0 +1,142 @@
+{
+  "reportContent": [
+    {
+      "fileName": "vulnerability-status/vulnerabilities.json",
+      "fileContent": {
+        "vulnerabilityReportInput": {
+          "reportId": "927c1d95-232f-4820-bd7f-3ee35cefc84b",
+          "reportFormat": "JSON",
+          "locale": "en_US",
+          "dateTimeRange": {
+          },
+          "remediationStatus": [
+            "PATCHED",
+            "REMEDIATION_REQUIRED",
+            "NEEDS_REVIEW",
+            "NEW",
+            "DUPLICATE",
+            "IGNORED",
+            "MITIGATED",
+            "REMEDIATION_COMPLETE"
+          ],
+          "projectIds": [
+            "e8cc5fe5-5044-4854-99b1-77aefe68059c",
+            "369ee20c-7efa-4467-802c-7214c9939753",
+            "186328d6-a065-4ae8-8fb6-524f5487f381"
+          ]
+        },
+        "versionDetailedRiskVulnerabilities": [
+          {
+            "versionSummary": {
+              "projectId": "186328d6-a065-4ae8-8fb6-524f5487f381",
+              "versionId": "bb4f6d79-f8b6-4964-8b4a-b3bdbb5cc5bb",
+              "projectName": "OWASP Glue",
+              "version": "1.0"
+            },
+            "detailedRiskVulnerabilities": [
+
+
+            ]
+          },
+          {
+            "versionSummary": {
+              "projectId": "e8cc5fe5-5044-4854-99b1-77aefe68059c",
+              "versionId": "99de64e8-6209-4463-9710-13a39c7b0a75",
+              "projectName": "WebGoat",
+              "projectTier": 1,
+              "version": "8"
+            },
+            "detailedRiskVulnerabilities": [
+              {
+                "producerProjectId": "ceeb1917-9826-4a96-93e0-b5dc76cc1d1a",
+                "producerVersionId": "bc0ff992-45aa-483a-8ecb-d8cc19e82f1e",
+                "producerChannelVersionId": "c32d9d27-5341-40cb-b7f9-965230526b29",
+                "producerProjectName": "jQuery UI",
+                "producerVersion": "1.10.4",
+                "producerChannelVersionExternalNamespace": "npmjs",
+                "producerChannelVersionExternalId": "jquery-ui/1.10.4",
+                "producerChannelVersionName": "1.10.4",
+                "vulnerabilityId": "CVE-2019-16295",
+                "description": "Cross-site scripting (XSS) vulnerability in jQuery UI before 1.12.0 might allow remote attackers to inject arbitrary web script or HTML via the closeText parameter of the dialog function.",
+                "createdDate": "2017-03-16T13:47:00.153Z",
+                "updatedDate": "2017-03-16T18:33:16.407Z",
+                "baseScore": 4.3,
+                "exploitabilitySubscore": 8.6,
+                "impactSubscore": 2.9,
+                "vulnerabilitySource": "NVD",
+                "remediationStatus": "NEW",
+                "remediationCreatedAt": "2017-07-07T18:54:17.507Z",
+                "remediationUpdatedAt": "2017-07-07T18:54:17.507Z",
+                "riskCreatedAt": "2017-07-07T18:54:17.560Z",
+                "riskUpdatedAt": "2017-07-07T18:54:17.560Z",
+                "riskExposureDuration": 1026699207
+              },
+                            {
+                "producerProjectId": "ceeb1917-9826-4a96-93e0-bhgffhgfhg1a",
+                "producerVersionId": "bc0ff992-45aa-483a-8ecb-fdghfghgfhfg",
+                "producerChannelVersionId": "c32d9d27-5341-40cb-b7f9-fghfdhfghf",
+                "producerProjectName": "jQuery UI",
+                "producerVersion": "1.10.4",
+                "producerChannelVersionExternalNamespace": "npmjs",
+                "producerChannelVersionExternalId": "jquery-ui/1.10.4",
+                "producerChannelVersionName": "1.10.4",
+                "vulnerabilityId": "CVE-2019-5533",
+                "description": "Cross-site scripting (XSS) vulnerability in jQuery UI before 1.12.0 might allow remote attackers to inject arbitrary web script or HTML via the closeText parameter of the dialog function.",
+                "createdDate": "2017-03-16T13:47:00.153Z",
+                "updatedDate": "2017-03-16T18:33:16.407Z",
+                "baseScore": 4.3,
+                "exploitabilitySubscore": 8.6,
+                "impactSubscore": 2.9,
+                "vulnerabilitySource": "NVD",
+                "remediationStatus": "NEW",
+                "remediationCreatedAt": "2017-07-07T18:54:17.507Z",
+                "remediationUpdatedAt": "2017-07-07T18:54:17.507Z",
+                "riskCreatedAt": "2017-07-07T18:54:17.560Z",
+                "riskUpdatedAt": "2017-07-07T18:54:17.560Z",
+                "riskExposureDuration": 1026699207
+              },
+                            {
+                "producerProjectId": "ceeb1917-9826-4a96-93e0-fdghfghfhfgh",
+                "producerVersionId": "bc0ff992-45aa-483a-8ecb-fdghfghdfghf",
+                "producerChannelVersionId": "c32d9d27-5341-40cb-b7f9-867730526b29",
+                "producerProjectName": "jQuery UI",
+                "producerVersion": "1.10.4",
+                "producerChannelVersionExternalNamespace": "npmjs",
+                "producerChannelVersionExternalId": "jquery-ui/1.10.4",
+                "producerChannelVersionName": "1.10.4",
+                "vulnerabilityId": "CVE-2017-5715",
+                "description": "Cross-site scripting (XSS) vulnerability in jQuery UI before 1.12.0 might allow remote attackers to inject arbitrary web script or HTML via the closeText parameter of the dialog function.",
+                "createdDate": "2017-03-16T13:47:00.153Z",
+                "updatedDate": "2017-03-16T18:33:16.407Z",
+                "baseScore": 4.3,
+                "exploitabilitySubscore": 8.6,
+                "impactSubscore": 2.9,
+                "vulnerabilitySource": "NVD",
+                "remediationStatus": "NEW",
+                "remediationCreatedAt": "2017-07-07T18:54:17.507Z",
+                "remediationUpdatedAt": "2017-07-07T18:54:17.507Z",
+                "riskCreatedAt": "2017-07-07T18:54:17.560Z",
+                "riskUpdatedAt": "2017-07-07T18:54:17.560Z",
+                "riskExposureDuration": 1026699207
+              }
+            ]
+          }
+        ],
+        "projectTierVulnerableCounts": {
+          "": 1061,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "numberOfVulnerableProjects": 2,
+        "numberOfVulnerableVersions": 2,
+        "generatedAt": "2017-07-19T16:05:56.697Z",
+        "numberOfSecureProjects": 1,
+        "numberOfSecureVersions": 1
+      },
+      "fileNamePrefix": "vulnerabilities"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "defaultCommandTimeout": 8000,
+  "env": {
+    "signupUrl": "https://app.kdev.docker/signup",
+    "loginUrl": "https://.kdev.docker/users/sign_in",
+    "adminUrl": "https://admin.kdev.docker",
+    "user": "",
+    "password": ""
+  },
+  "viewportWidth": 1200,
+  "viewportHeight": 1080
+
+}

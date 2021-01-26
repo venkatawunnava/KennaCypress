@@ -1,0 +1,70 @@
+{
+  "add_connector": [
+    {
+      "connector": "#appscan"
+    },
+    {
+      "connector": "#netsparker_web_application_security_scanner"
+    },
+    {
+      "connector": "#w3af"
+    },
+    {
+      "connector": "#black_duck_json"
+    },
+    {
+      "connector": "#checkmarx_xml"
+    },
+    {
+      "connector": "#veracode_xml"
+    },
+    {
+      "connector": "#nexpose_enterprise_xml"
+    },
+    {
+      "connector": "#nessus_xml"
+    },
+    {
+      "connector": "#kenna_data_importer"
+    }
+  ],
+  "uploadFile": [
+    {
+      "connectorName": "Kenna Data Importer",
+      "fileName": "KDI.json"
+    },
+    {
+      "connectorName": "Nessus XML",
+      "fileName": "nessus.xml"
+    },
+
+    {
+      "connectorName": "Nexpose Enterprise XML",
+      "fileName": "nexpose.xml"
+    },
+    {
+      "connectorName": "Veracode XML",
+      "fileName": "veracode.xml"
+    },
+    {
+      "connectorName": "Checkmarx XML",
+      "fileName": "checkmarx.xml"
+    },
+    {
+      "connectorName": "Black Duck JSON",
+      "fileName": "blackduck.json"
+    },
+    {
+      "connectorName": "w3af",
+      "fileName": "w3af.xml"
+    },
+    {
+      "connectorName": "Netsparker Web Application Security Scanner",
+      "fileName": "netsparker.xml"
+    },
+    {
+      "connectorName": "AppScan",
+      "fileName": "appscan.xml"
+    }
+  ]
+}
