@@ -6,7 +6,7 @@ const explorePage = new ExplorePage();
 const homePage = new HomePage();
 const riskMeterData = require('../../fixtures/riskMeters.json')
 
-describe('Add Connectors and Run', () => {
+describe('Create Risk Meters', () => {
   beforeEach(function () {
     cy.login();
   });
@@ -19,7 +19,10 @@ describe('Add Connectors and Run', () => {
       explorePage.sidebarSaveSearchButton().click();
       explorePage.createGroupModalName().type(addRiskMeter.saveAs);
       explorePage.createGroupModalSave().click();
-      explorePage.createGroupModalName().should('not.exist');
+      // explorePage.createGroupModalName().should('not.be.visible');
+      // explorePage.createGroupModal().should('not.exist');
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(10000);
     })
   })
 });
