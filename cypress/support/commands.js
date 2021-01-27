@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-import 'cypress-file-upload';
+// import 'cypress-file-upload';
 import Login from '/cypress/support/pages/Login'
 const login = new Login();
 
@@ -35,3 +35,4 @@ Cypress.Commands.add('login', () => {
 })
 
 //+ '@kennasec.com'
+
