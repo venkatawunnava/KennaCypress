@@ -20,9 +20,7 @@ describe('Create Risk Meters', () => {
       explorePage.createGroupModalName().type(addRiskMeter.saveAs);
       explorePage.createGroupModalSave().click();
       // explorePage.createGroupModalName().should('not.be.visible');
-      // explorePage.createGroupModal().should('not.exist');
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(10000);
+      explorePage.createGroupModal().should('not.exist'); 
     })
   })
 });

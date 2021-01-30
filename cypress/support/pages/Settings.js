@@ -1,7 +1,7 @@
-class ExplorePage {
+class Settings {
 
   //TO Check if rows have been loaded
-  assetTabActiveCircle() {
+  settingUsers() {
     return cy.get('.fa.fa-circle');
   }
 
@@ -32,4 +32,4 @@ class ExplorePage {
   }
 }
 
-export default ExplorePage
+export default Settings
