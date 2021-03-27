@@ -6,7 +6,7 @@ const connectors = new Connectors();
 const homePage = new HomePage();
 const connectorData = addConnectorData;
 
-describe.skip('Add Connectors and Run', () => {
+describe('Add Connectors and Run', () => {
   beforeEach(function () {
     cy.login();
   });
@@ -15,8 +15,6 @@ describe.skip('Add Connectors and Run', () => {
     it.skip('adding connector '+addConnector.connector, function () {
       homePage.connectorTab().click();
       connectors.connAdd().click();
-      console.log(addConnector.connector);
-      cy.log(addConnector.connector);
       cy.get(addConnector.connector).click();
       connectors.connSaveXML().click();
     })

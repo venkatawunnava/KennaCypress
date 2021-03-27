@@ -21,6 +21,7 @@
     "cypress": "^6.3.0",
     "cypress-file-upload": "^5.0.2",
     "cypress-intellij-reporter": "^0.0.6",
+    "cypress-xpath": "^1.6.1",
     "eslint": "^7.18.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-cypress": "^2.11.2",

@@ -1,0 +1,24 @@
+{
+  "add_roles": [
+    {
+      "role":"ReadonlyRoleUI",
+      "riskMeter":"CanIparkHere"
+    },
+    {
+      "role":"WriteRoleUI",
+      "riskMeter":"CanIparkHere"
+    },
+    {
+      "role":"CustomRoleUIGO",
+      "riskMeter":"CanIparkHere"
+    },
+    {
+      "role":"CustomRoleUIAO",
+      "riskMeter":"CanIparkHere"
+    },
+    {
+      "role":"CustomRoleUIVO",
+      "riskMeter":"CanIparkHere"
+    }
+  ]
+}

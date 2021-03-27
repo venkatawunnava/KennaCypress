@@ -1,0 +1,1 @@
+// cy.get('a[href*=\'users\']').click({force: true});
